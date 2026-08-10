@@ -1,0 +1,45 @@
+
+# Model checkpoints
+*.pth
+*.pt
+*.onnx
+*.engine
+*.ckpt
+*.safetensors
+checkpoints/
+
+# Python environments
+venv/
+.venv/
+
+# ROS 2 generated files
+build/
+install/
+log/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Model checkpoints
+*.pth
+*.pt
+*.onnx
+*.engine
+*.ckpt
+*.safetensors
+checkpoints/
+
+# Python environments
+venv/
+.venv/
+
+# ROS 2 generated files
+build/
+install/
+log/
+
+# Python cache
+__pycache__/
+*.pyc
+.vscode/
