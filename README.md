@@ -162,8 +162,6 @@ Evaluated with the same rosbag/Gazebo ground-truth pipeline described in [Testin
 | ScanNet Batch 1 | 278 | 0.5673 | 2.1515 | 0.6380 | 0.2085 | 0.4435 | 0.7218 |
 | ScanNet Batch 2 (`scannet_batch2`) | 279 | **0.5047** | 2.1524 | **0.6162** | **0.2239** | **0.5053** | **0.7637** |
 
-> ScanNet Batch 1 is included above for completeness but is no longer exposed as a `model_key` option on the `yolo_depth` node — only `150epochs` and `scannet_batch2` are currently selectable (see [Running the Nodes](#running-the-nodes)).
-
 **ScanNet Batch 2 vs. base model (best result):**
 
 | Metric | Change |
