@@ -46,7 +46,6 @@ depth/
 ├── depth/
 │   ├── yolo_depth.py          # YOLO26 Depth ROS 2 node
 │   ├── depth_anything_v2.py   # DAv2 ROS 2 node
-│   └── Depth-Anything-V2/     # vendored DAv2 repo (metric_depth module)
 ├── package.xml
 ├── setup.py
 └── setup.cfg
@@ -64,7 +63,7 @@ cd Depth-Anything-V2/metric_depth
 pip install -r requirements.txt
 ```
 
-This node does **not** use the base DAv2 checkpoints from the official repo — it loads our own fine-tuned checkpoints (see [Fine-Tuning](#fine-tuning)). Download the fine-tuned checkpoints and update the checkpoint paths in `depth/depth_anything_v2.py` (`self.model_list`) to point at wherever you saved them.
+This node does **not** use the base DAv2 checkpoints from the official repo it loads our own fine-tuned checkpoints (see [Fine-Tuning](#fine-tuning)). Download the fine-tuned checkpoints and update the checkpoint paths in `depth/depth_anything_v2.py` (`self.model_list`) to point at wherever you saved them.
 
 If you're running on CPU, uninstall `xformers`. It's a GPU only dependency and will throw an error otherwise. See [DepthAnything/Depth-Anything-V2#312](https://github.com/DepthAnything/Depth-Anything-V2/issues/312) for the exact error.
 
@@ -78,7 +77,7 @@ python3 -m pip uninstall xformers
 pip install ultralytics
 ```
 
-This node does **not** use the base YOLO26 Depth weights — it loads our own fine-tuned checkpoints (see [Fine-Tuning](#fine-tuning)). Download the fine-tuned checkpoints and update the checkpoint paths in `depth/yolo_depth.py` (`self.model_paths`) to point at wherever you saved them.
+This node does **not** use the base YOLO26 Depth weights it loads our own fine-tuned checkpoints (see [Fine-Tuning](#fine-tuning)). Download the fine-tuned checkpoints and update the checkpoint paths in `depth/yolo_depth.py` (`self.model_paths`) to point at wherever you saved them.
 
 See the official task docs for background on the base architecture: [Ultralytics — Depth Estimation](https://docs.ultralytics.com/tasks/depth).
 
@@ -176,16 +175,6 @@ Evaluated with the same rosbag/Gazebo ground-truth pipeline described in [Testin
 | Delta2 (δ<1.25²) | +799.8% (8x) |
 | Delta3 (δ<1.25³) | +341.1% (4.4x) |
 
-**ScanNet Batch 1 vs. base model:**
-
-| Metric | Change |
-|---|---|
-| AbsRel | 76.7% reduction |
-| RMSE | 46.4% reduction |
-| LogRMSE | 46.9% reduction |
-| Delta1 | +970.5% |
-| Delta2 | +689.7% |
-| Delta3 | +316.9% |
 
 ### Best YOLO checkpoint vs. best DAv2 checkpoint
 
@@ -197,8 +186,6 @@ Evaluated with the same rosbag/Gazebo ground-truth pipeline described in [Testin
 | Delta1↑ | **0.242** | 0.144 | YOLO |
 | Delta2↑ | **0.506** | 0.333 | YOLO |
 | Delta3↑ | **0.730** | 0.508 | YOLO |
-
-Note the "Top YOLO" row here (AbsRel 0.505, RMSE 2.370, LogRMSE 0.641, δ1 0.242, δ2 0.506, δ3 0.730) doesn't exactly match the ScanNet Batch 2 row in the YOLO table above (0.5047 / 2.1524 / 0.6162 / 0.2239 / 0.5053 / 0.7637) — RMSE and LogRMSE in particular differ by more than rounding. This is reproduced as-given; it hasn't been reconciled against the per-checkpoint tables above, so treat the discrepancy as unresolved until source numbers are checked.
 
 ## Testing / Evaluation
 
