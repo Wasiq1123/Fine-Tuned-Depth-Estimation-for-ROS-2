@@ -128,8 +128,6 @@ ros2 run depth yolo_depth --ros-args -p model_key:=scannet_batch2 -p frame_skip:
 
 `frame_skip` works the same way across both nodes and takes any positive integer. It controls how many incoming RGB frames go by per inference run, so `frame_skip:=3` runs inference on 1 out of every 3 frames.
 
-> Running both nodes at the same time: both default to overlapping node/topic names (see [Package Structure](#package-structure) and [Topics](#topics)). Remap `__node` and the output topic per instance if you need them running concurrently rather than sequentially — this hasn't been verified against your specific ROS 2 setup, so confirm behavior before relying on it.
-
 ## Model Comparison
 
 Evaluated with the same rosbag/Gazebo ground-truth pipeline described in [Testing / Evaluation](#testing--evaluation). Lower is better for AbsRel, RMSE, and LogRMSE. Higher is better for δ1 through δ3.
